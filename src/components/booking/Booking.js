@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Booking = (props) => {
   const classes = useStyles();
+
+
+
   return (
     <div>
       <Grid></Grid>
@@ -61,8 +64,9 @@ const Booking = (props) => {
               <Typography component="h1" variant="h5">
                 Book Here
               </Typography>
-              <form className={classes.form} noValidate>
+              <form className={classes.form}  >
                 <TextField
+                
                   margin="normal"
                   required
                   fullWidth
@@ -73,6 +77,7 @@ const Booking = (props) => {
                   autoFocus
                 />
                 <TextField
+                
                   margin="normal"
                   required
                   fullWidth

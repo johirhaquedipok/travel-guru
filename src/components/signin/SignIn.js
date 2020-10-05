@@ -146,10 +146,13 @@ const SignIn = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-     {
-       user.isSignedIn &&  <p>Name: {user.displayName}</p>
-      
-     }
+   
+     
+        <div style= {{color: 'red'}}>
+  {user.error} 
+     </div>
+
+     <div> {user.success} </div>
     <form onSubmit={handleOnSubmit}>
           {/* Email field */}
           <TextField
@@ -164,7 +167,7 @@ const SignIn = () => {
             type="text"
             autoComplete="email"
             autoFocus
-            helperText="Use a valid email."
+            
           />
           {/* password field */}
           <TextField
@@ -179,10 +182,10 @@ const SignIn = () => {
             id="password"
             placeholder="Password"
             autoComplete="current-password"
-            helperText="Incorrect entry."
+            
           />
-          {/* submit with button of googlge sing in firebse dosent work with firebase sign in */}
-          {/* <Link className={classes.submit}> */}
+          
+         
          <div>
          <Button
          
@@ -198,6 +201,7 @@ const SignIn = () => {
          </div>
           {/* </Link> */}
         </form>
+        
         {/* extra starts */}
         {/* extra sign in  buttons  */}
         <Grid container justify="center">

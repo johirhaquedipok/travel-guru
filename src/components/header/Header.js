@@ -1,9 +1,11 @@
+import React, { useContext } from 'react';
+
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import React from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography"
+import { UserContext } from "../../App";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   
 const Header = () => {
     const classes = useStyles();
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <div>
                 <AppBar
@@ -60,15 +64,7 @@ const Header = () => {
               >
                 Booking
               </Link>
-              <Link
-                to="/signin"
-                variant="button"
-                color="textPrimary"
-                className={classes.links}
-              >
-                Places
-              </Link>
-
+           
               <Link to="/signin" className={classes.links}>
                 <Button color="secondary" variant="contained">
                   Sign In
@@ -83,6 +79,12 @@ const Header = () => {
                   Sign Up
                 </Button>
               </Link>
+              <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.links}
+                  onClick= { () => setLoggedInUser({})}
+              >Sign Out</Button>
             </Typography>
           </nav>
         </Toolbar>
