@@ -32,7 +32,7 @@ const Header = () => {
         <div>
                 <AppBar
         position="static"
-        color="default"
+        color="transparent"
         elevation={0}
         className={classes.appBar}
       >
@@ -50,6 +50,7 @@ const Header = () => {
               <Link
                 to="/home"
                 variant="button"
+                
                 className={classes.links}
               >
                 Home

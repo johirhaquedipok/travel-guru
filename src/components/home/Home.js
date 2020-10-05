@@ -35,7 +35,7 @@ const Home = () => {
        
         <Grid container >
           <Grid item xs={12} md={4} className={classes.control}>
-            <Typography variant="h3" style={{ textTransform: "uppercase" }}>
+            <Typography variant="h3"   style={{ textTransform: "uppercase" }}>
               COX'S BAZAR
             </Typography>
 
@@ -75,7 +75,7 @@ const Home = () => {
                         <Link to="/booking">
                           <img 
                             width="100%"
-                            src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1575&q=80"
+                            src="https://images.unsplash.com/photo-1567766741121-2b0ffc89c1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
                             alt=""
                           ></img>
                         </Link>
@@ -103,15 +103,32 @@ const Home = () => {
               <Grid item xs={12} md={4}>
                 <Card className={classes.card}>
                   <CardActionArea>
-                    <CardMedia className={classes.media}>
-                      <Link to="/booking">
-                        <img
-                          width="100%"
-                          src="https://images.unsplash.com/photo-1586948298331-a07cd866d3bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                          alt=""
-                        ></img>
-                      </Link>
-                    </CardMedia>
+                  <div style={{ position: "relative"}}>
+                      <CardMedia className={classes.media}>
+                        <Link to="/booking">
+                          <img 
+                            width="100%"
+                            src="https://images.unsplash.com/photo-1499363536502-87642509e31b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                            alt=""
+                          ></img>
+                        </Link>
+                      </CardMedia>
+                    </div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        color: "white",
+                        bottom: 20,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        textTransform:'uppercase',
+                        
+                      }}
+                    >
+                      <Typography variant='h4'>
+                      Sajek
+                      </Typography>
+                    </div>
                   </CardActionArea>
                 </Card>
               </Grid>
@@ -119,15 +136,32 @@ const Home = () => {
               <Grid item xs={12} md={4}>
                 <Card className={classes.card}>
                   <CardActionArea>
-                    <CardMedia className={classes.media}>
-                      <Link to="/booking">
-                        <img
-                          width="100%"
-                          src="https://images.unsplash.com/photo-1597451407751-3cc60d5905de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
-                          alt=""
-                        ></img>
-                      </Link>
-                    </CardMedia>
+                  <div style={{ position: "relative"}}>
+                      <CardMedia className={classes.media}>
+                        <Link to="/booking">
+                          <img 
+                            width="100%"
+                            src="https://images.unsplash.com/photo-1534329539061-64caeb388c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=281&q=80"
+                            alt=""
+                          ></img>
+                        </Link>
+                      </CardMedia>
+                    </div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        color: "white",
+                        bottom: 20,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        textTransform:'uppercase',
+                        
+                      }}
+                    >
+                      <Typography variant='h4'>
+                      Kuakata
+                      </Typography>
+                    </div>
                   </CardActionArea>
                 </Card>
               </Grid>

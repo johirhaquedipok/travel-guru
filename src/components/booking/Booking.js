@@ -93,7 +93,7 @@ const Booking = (props) => {
                       <label >From</label>
                     </div>
                     <div>
-                      <TextField type="date" required fullWidth autoFocus />
+                      <TextField required type="date" required fullWidth autoFocus />
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -101,7 +101,7 @@ const Booking = (props) => {
                       <label >To</label>
                     </div>
                     <div>
-                      <TextField type="date" required fullWidth autoFocus />
+                      <TextField required type="date" required fullWidth autoFocus />
                     </div>
                   </Grid>
                 </Grid>

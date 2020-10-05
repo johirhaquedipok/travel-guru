@@ -89,7 +89,7 @@ const Signup = () => {
       if(e.target.value === 'email'){
           fieldValid = /\S+@\S+\.\S+/.test(e.target.value);
           if (!fieldValid) {
-              errorMassage('Email is not valid. Enter a valid email')
+              errorMessage('Email is not valid. Enter a valid email')
           }
       }
       if(e.target.value === 'password'){
@@ -97,7 +97,7 @@ const Signup = () => {
           const passwordNumber = /\d{1}/.test(e.target.value)
           fieldValid = passwordValid && passwordNumber;
           if(!fieldValid) {
-              errorMassage('password is not valid. Password must be 4 latter or 1 number')
+              errorMessage('password is not valid. Password must be 4 latter or 1 number')
           }
       }
       if(e.target.value === 'confirmPassword'){
@@ -105,19 +105,19 @@ const Signup = () => {
           const passwordNumber = /\d{1}/.test(e.target.value)
           fieldValid = passwordValid && passwordNumber;
           if(!fieldValid) {
-              errorMassage('password is not matched. try again')
+              errorMessage('password is not matched. try again')
           }
       }
       if(e.target.value === 'firstName'){
           fieldValid = e.target.value.length > 4;
           if(!fieldValid){
-              errorMassage('Name should be at least 4 latter.')
+              errorMessage('Name should be at least 4 latter.')
           }
       }
       if(e.target.value === 'lastName'){
           fieldValid = e.target.value.length > 4;
           if(!fieldValid){
-              errorMassage('Name should be at least 4 latter.')
+              errorMessage('Name should be at least 4 latter.')
           }
       }
       
@@ -128,8 +128,8 @@ const Signup = () => {
       }
 
   }
-  //error errorMassage
-  const errorMassage = msg => {
+  //error errorMessage
+  const errorMsg = msg => {
       setErrorMessage(msg);
   }
 
@@ -213,9 +213,50 @@ const updateUserName = name => {
 
 
 
+// fb sign in
+const handleFbSignIn =  () => {
+  const fbProvider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(fbProvider)
+  .then((res) => {
+    const { email, displayName } = res.user;
+    const signedInUser = {
+      isSignedIn: true,
+      name: displayName,
+      email: email,
+    };
+
+    setUser(signedInUser);
+    setLoggedInUser(signedInUser);
+    history.replace(from);
+  })
+
+    // The signed-in user info.
+    
+    // ...
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    console.log(errorCode, errorMessage, email, credential)
+    // ...
+  });
+}
+
+
+
+
+// fb sign in ends
+
+
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Typography color = "secondary">NB: Text areas erorr  and password error is given in console area.  </Typography>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -229,7 +270,7 @@ const updateUserName = name => {
          {/* error message */}
          <Typography color="error" align="center">
           <br/>
-          <div>{errorMessage}</div>
+          
         </Typography>
       
         <form className={classes.form} noValidate onSubmit = {handleSignUpSubmit}>
@@ -336,10 +377,11 @@ const updateUserName = name => {
 
         <div>
         <Button
+        onClick = {handleFbSignIn}
             type="submit"
             fullWidth
             variant="contained"
-            color="default"
+            color="primary"
             className={classes.submit}
           >
             <Box mr={4}>
@@ -357,7 +399,7 @@ const updateUserName = name => {
             type="submit"
             fullWidth
             variant="contained"
-            color="default"
+            color="secondary"
             className={classes.submit}
           >
             <Box mr={4}>

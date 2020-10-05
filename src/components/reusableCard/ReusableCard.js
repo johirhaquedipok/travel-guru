@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     //   maxWidth: 345,
     marginBottom: "0.5em",
   },
-  heightimg: {
+  heightImg: {
     height: "14em",
     width: "14em",
   },

@@ -10,13 +10,14 @@ import Avatar from "@material-ui/core/Avatar";
 import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import FacebookIcon from '@material-ui/icons/Facebook';
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { Mail } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 import { UserContext } from "../../App";
 import config from "../../firebaseConfig";
-import firebaseConfig from '../../firebaseConfig';
 import { makeStyles } from "@material-ui/core/styles";
 import { useContext } from "react";
 
@@ -59,6 +60,48 @@ const SignIn = () => {
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/places" } };
+
+
+
+
+// fb sign in
+   const handleFbSignIn =  () => {
+    const fbProvider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(fbProvider)
+    .then((res) => {
+      const { email, displayName } = res.user;
+      const signedInUser = {
+        isSignedIn: true,
+        name: displayName,
+        email: email,
+      };
+
+      setUser(signedInUser);
+      setLoggedInUser(signedInUser);
+      history.replace(from);
+    })
+
+      // The signed-in user info.
+      
+      // ...
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      console.log(errorCode, errorMessage, email, credential)
+      // ...
+    });
+  }
+  
+
+
+
+  // fb sign in ends
+
 
   // google popup sign in
   const googleSignIn = () => {
@@ -228,14 +271,15 @@ const SignIn = () => {
           {/* facebook button */}
          <div>
          <Button
+         onClick = {handleFbSignIn}
             type="submit"
             fullWidth
             variant="contained"
-            color="default"
+            color="primary"
             className={classes.submit}
           >
             <Box mr={4}>
-              <span className="material-icons">facebook</span>
+              <FacebookIcon></FacebookIcon>
             </Box>
             Continue With Facebook
           </Button>
@@ -251,11 +295,11 @@ const SignIn = () => {
               type="submit"
               fullWidth
               variant="contained"
-              color="default"
+              color="secondary"
               className={classes.submit}
             >
               <Box mr={4}>
-                <span className="material-icons">mail</span>
+                <Mail></Mail>
               </Box>
               Continue With Google
             </Button>
